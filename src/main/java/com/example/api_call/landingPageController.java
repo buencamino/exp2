@@ -26,7 +26,10 @@ public class landingPageController {
 
     @GetMapping("/home")
     public String landingPage() throws DbxException {
+
+        /*
         String url = "https://api.ipstack.com/";
+
         String ip = "134.201.250.155";
         String key = "?access_key=" + apikey;
         StringBuilder builder = new StringBuilder(url);
@@ -35,12 +38,14 @@ public class landingPageController {
         String result = builder.toString();
 
         System.out.println(result);
+*/
 
-        String output = apiservice.getIP(result);
+        String url = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=9b1a02243387efa3b3c1f6915bfe7431&hash=bc4362118002999f31ef3937ac27c6f1";
+        String output = apiservice.getIP(url);
         JsonObject jsonObject = JsonParser.parseString(output).getAsJsonObject();
-        String continent = jsonObject.get("continent_name").getAsString();
+        String x = jsonObject.get("status").getAsString();
 
-        return jsonObject.toString() + " the continent is: " + continent;
+        return x;
 
         /*
         DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/gigantes").build();
@@ -64,7 +69,5 @@ public class landingPageController {
 
             result = client.files().listFolderContinue(result.getCursor());
         }
-*/
-
-    }
+*/}
 }
