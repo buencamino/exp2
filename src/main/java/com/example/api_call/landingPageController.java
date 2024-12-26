@@ -40,10 +40,11 @@ public class landingPageController {
         System.out.println(result);
 */
 
-        String url = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=9b1a02243387efa3b3c1f6915bfe7431&hash=bc4362118002999f31ef3937ac27c6f1";
+        //String url = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=9b1a02243387efa3b3c1f6915bfe7431&hash=bc4362118002999f31ef3937ac27c6f1";
+        String url ="https://ipgeolocation.abstractapi.com/v1/?api_key=f2b7aaae52344264af0e49113621f96e&ip_address=83.150.201.158";
         String output = apiservice.getIP(url);
         JsonObject jsonObject = JsonParser.parseString(output).getAsJsonObject();
-        String x = jsonObject.get("status").getAsString();
+        String x = jsonObject.get("timezone").getAsJsonObject().toString();
 
         return x;
 
